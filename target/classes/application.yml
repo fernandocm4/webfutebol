@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   application:
@@ -9,8 +9,6 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-
-
   jpa:
     properties:
       hibernate:
@@ -18,10 +16,7 @@ spring:
           lob:
             non_contextual_creation: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
     hibernate:
-      dll-auto: update
-
+      ddl-auto: update
   doc:
-    packagesToScan: com.jogador.futebol.control
-
+    packages-to-scan: com.jogador.futebol.control
