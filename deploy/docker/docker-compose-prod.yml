@@ -11,28 +11,33 @@ services:
       TZ: "America/Sao_Paulo"
 
     ports:
-      - "5432:5432"
+      - "15432:5432"
     networks:
-      - pg-db-network
+      - docker-network
     restart: always
 
-
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
+  futebol-api:
+    container_name: futebol-api
+    image: darkar007/futebol-api-2:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "admin"
+      SERVER_PORT: 3000
+      SPRING_PROFILES_ACTIVE: prod
       TZ: "America/Sao_Paulo"
-
     ports:
-      - "16543:80"
+      - "80:3000"
     depends_on:
       - postgres-db
     networks:
-      - pg-db-network
+      - docker-network
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+        reservations:
+          memory: 700M
+
 
 networks:
-  pg-db-network:
+  docker-network:
     driver: bridge

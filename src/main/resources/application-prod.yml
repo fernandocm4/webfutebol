@@ -1,14 +1,19 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT}
 
 spring:
   application:
     name: "WebFutebol"
 
+  config:
+    activate:
+      on-profile:
+        - prod
+
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://postgres-db:5432/novobanco
+    username: admin
+    password: admin
   jpa:
     properties:
       hibernate:

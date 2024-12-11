@@ -4,13 +4,10 @@ server:
 spring:
   application:
     name: "WebFutebol"
-
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-
-
+    url: jdbc:postgresql://postgres-db:5432/novobanco
+    username: admin
+    password: admin
   jpa:
     properties:
       hibernate:
@@ -18,10 +15,7 @@ spring:
           lob:
             non_contextual_creation: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
     hibernate:
-      dll-auto: update
-
+      ddl-auto: update
   doc:
-    packagesToScan: com.jogador.futebol.control
-
+    packages-to-scan: com.jogador.futebol.control
